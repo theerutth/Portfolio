@@ -1,9 +1,7 @@
 <template>
   <div class="min-h-screen bg-black p-6">
-    <h1
-      class="text-xl font-montserrat font-semibold text-white text-center mb-8 transform transition-all duration-300 ease-in-out hover:scale-105">
-      Others Works
-    </h1>
+    <h1 class="text-2xl font-bold mb-6 text-white font-montserrat">Others Works</h1>
+
     <!-- Card container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <!-- Each card representing a work -->
