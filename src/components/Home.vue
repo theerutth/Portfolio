@@ -190,8 +190,8 @@
           <!-- Explore Button -->
           <div class="flex md:justify-start justify-center mt-6">
             <RouterLink to="/hobby-works">
-              <button
-                class="text-white font-montserrat font-medium text-lg md:text-xl py-3 px-8 border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 ease-in-out active:scale-95 shadow-lg">
+              <button class="text-white font-montserrat font-medium text-lg md:text-xl py-3 px-8 border-2 border-white rounded-full 
+          hover:bg-white hover:text-black transition-all duration-300 ease-in-out active:scale-95 shadow-lg">
                 EXPLORE
               </button>
             </RouterLink>
@@ -205,23 +205,22 @@
             <!-- Card 1 -->
             <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby1.png" alt="Hobby 1"
-                class="w-full h-full object-cover filter grayscale lg:hover:filter-none transition duration-300">
+                class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
             <!-- Card 2 -->
             <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby5.png" alt="Hobby 2"
-                class="w-full h-full object-cover filter grayscale lg:hover:filter-none transition duration-300">
+                class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
             <!-- Card 3 -->
             <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby9.png" alt="Hobby 3"
-                class="w-full h-full object-cover filter grayscale lg:hover:filter-none transition duration-300">
+                class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
           </div>
         </div>
       </div>
     </div>
-
 
     <!-- Contact Section -->
     <div id="contact" class="min-h-screen bg-white flex flex-col justify-center items-center py-16 px-6 md:px-12">

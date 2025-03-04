@@ -7,7 +7,7 @@
       <!-- Each card representing a work -->
       <div v-for="(work, index) in works" :key="index" class="bg-white shadow-lg overflow-hidden">
         <img :src="work.image" :alt="work.description"
-          class="w-full h-full object-cover transition-all duration-300 grayscale lg:hover:grayscale-0" />
+          class="w-full h-full object-cover grayscale transition-all duration-300 hover:grayscale-0" />
       </div>
     </div>
 
@@ -20,6 +20,8 @@
         </button>
       </div>
     </router-link>
+
+
   </div>
 </template>
 
@@ -35,6 +37,8 @@ import illus7 from '@/assets/illus/illus7.png';
 import illus10 from '@/assets/illus/illus10.png';
 import illus11 from '@/assets/illus/illus11.png';
 import illus12 from '@/assets/illus/illus12.png';
+
+
 
 export default {
   name: 'GraphicExplore',
@@ -52,6 +56,7 @@ export default {
         { description: 'Description of Work 10', image: illus10 },
         { description: 'Description of Work 11', image: illus11 },
         { description: 'Description of Work 12', image: illus12 },
+
       ]
     }
   }
