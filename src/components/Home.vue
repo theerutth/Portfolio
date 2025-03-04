@@ -59,29 +59,27 @@
       </div>
       <div class="works-section bg-white text-black p-10 md:p-10 flex flex-col justify-center">
         <a href="#graphic"
-          class="border-2 text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
+          class="text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
           <button class="flex items-center justify-between w-full">
             GRAPHIC DESIGN
             <span class="ml-2">→</span>
           </button>
         </a>
         <a href="#uxui"
-          class="border-2 text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
+          class="text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
           <button class="flex items-center justify-between w-full">
             UX/UI DESIGN
             <span class="ml-2">→</span>
           </button>
         </a>
         <a href="#hobby"
-          class="border-2 text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
+          class="text-2xl md:text-4xl text-left p-6 md:p-10 hover:bg-black hover:text-white hover:font-bold transition-all duration-300 ease-in-out transform hover:scale-105">
           <button class="flex items-center justify-between w-full">
             OTHERS WORKS
             <span class="ml-2">→</span>
           </button>
         </a>
       </div>
-
-
     </div>
 
     <!-- Card Preview Section -->
@@ -136,33 +134,33 @@
     </div>
 
     <div id="uxui" class="relative">
-      <div class="card-preview-section bg-black p-10 h-screen flex flex-col justify-center items-center">
+      <div class="card-preview-section bg-black p-10 min-h-screen flex flex-col justify-center items-center">
         <!-- Sliding Container -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
           <div class="flex w-full h-full transition-all duration-1000 ease-in-out" :style="slideStyle">
             <!-- Card 1 -->
             <div class="card bg-white h-full w-full shadow-lg overflow-hidden relative flex-shrink-0">
               <div class="absolute inset-0 bg-black bg-opacity-70"></div>
-              <img src="../assets/uxui/cp23login.png" alt="Project 1" class="w-full h-full object-cover">
+              <img src="../assets/uxui/cp1.png" alt="Project 1" class="w-full h-full object-cover">
             </div>
 
             <!-- Card 2 -->
             <div class="card bg-white h-full w-full shadow-lg overflow-hidden relative flex-shrink-0">
               <div class="absolute inset-0 bg-black bg-opacity-70"></div>
-              <img src="../assets/uxui/proactive.png" alt="Project 1" class="w-full h-full object-cover">
+              <img src="../assets/uxui/pa1.png" alt="Project 2" class="w-full h-full object-cover">
             </div>
 
             <!-- Card 3 -->
             <div class="card bg-white h-full w-full shadow-lg overflow-hidden relative flex-shrink-0">
               <div class="absolute inset-0 bg-black bg-opacity-70"></div>
-              <img src="../assets/uxui/ks.png" alt="Project 1" class="w-full h-full object-cover">
+              <img src="../assets/uxui/ks.png" alt="Project 3" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
 
         <!-- Header Section -->
         <div class="relative text-center z-10 mb-8">
-          <h2 class="font-montserrat text-4xl font-bold text-white">UX/UI DESIGN</h2>
+          <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-white">UX/UI DESIGN</h2>
           <RouterLink to="/uxui-works">
             <button
               class="text-white font-montserrat font-medium text-lg md:text-xl m-4 p-3 px-6 border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 ease-in-out active:scale-90">
@@ -172,6 +170,7 @@
         </div>
       </div>
     </div>
+
 
     <div id="hobby" class="min-h-screen bg-black p-10 flex flex-col">
       <!-- Content Wrapper -->
@@ -201,23 +200,20 @@
 
         <!-- Card Grid Section (Right) -->
         <div
-          class="w-full md:w-3/5 h-[600px] overflow-y-auto scrollbar-hide p-4 bg-black bg-opacity-40 rounded-xl shadow-xl flex-grow">
+          class="w-full md:w-3/5 h-[600px] overflow-y-auto scrollbar-hide p-4 bg-opacity-40 rounded-xl shadow-xl flex-grow">
           <div class="flex flex-col gap-6">
             <!-- Card 1 -->
-            <div
-              class="min-h-[400px] card bg-gray-100 shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+            <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby1.png" alt="Hobby 1"
                 class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
             <!-- Card 2 -->
-            <div
-              class="min-h-[400px] card bg-gray-100 shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+            <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby5.png" alt="Hobby 2"
                 class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
             <!-- Card 3 -->
-            <div
-              class="min-h-[400px] card bg-gray-100 shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+            <div class="card shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
               <img src="../assets/hobby/hobby9.png" alt="Hobby 3"
                 class="w-full h-full object-cover filter grayscale hover:filter-none transition duration-300">
             </div>
@@ -267,7 +263,7 @@
               <transition name="fade">
                 <div v-if="!isEditing" class="w-full">
                   <button @click="isEditing = true"
-                    class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                    class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105">
                     Email: theerut.than@gmail.com
                   </button>
                 </div>
@@ -297,7 +293,7 @@
           <li>
             <a href="tel:+66 899006538">
               <button
-                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105">
                 Tel: +66 899006538
               </button>
             </a>
@@ -307,7 +303,7 @@
           <li>
             <a href="https://behance.net/theerutthankan" target="_blank">
               <button
-                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105">
                 Behance: theerutthankan
               </button>
             </a>
@@ -317,7 +313,7 @@
           <li>
             <a href="https://www.instagram.com/trashpr0ject" target="_blank">
               <button
-                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                class="w-full flex items-center gap-3 py-6 px-8 bg-white text-black text-xl hover:bg-black hover:text-white border-2 border-gray-200 transition-all duration-300 ease-in-out transform hover:scale-105">
                 Instagram: @trashpr0ject
               </button>
             </a>

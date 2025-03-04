@@ -2,13 +2,14 @@
   <div class="min-h-screen bg-black p-6">
     <h1
       class="text-xl font-montserrat font-semibold text-white text-center mb-8 transform transition-all duration-300 ease-in-out hover:scale-105">
-      Hobby Works</h1>
+      Hobby Works
+    </h1>
 
     <!-- Card container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <!-- Each card representing a work -->
       <div v-for="(work, index) in works" :key="index"
-        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/50">
+        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
         <img :src="work.image" :alt="work.description"
           class="w-full h-64 object-cover rounded-t-lg cursor-pointer group-hover:scale-110 transition-all duration-300 ease-in-out"
           @click="openModal(work.image)" />
@@ -29,7 +30,7 @@
     <div v-if="isModalOpen"
       class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 transition-opacity duration-500 ease-in-out"
       @click="closeModal">
-      <div class="relative" @click.stop>
+      <div class="relative max-w-full max-h-full flex justify-center items-center">
         <img :src="modalImage" class="max-w-full max-h-screen object-contain rounded-lg shadow-2xl shadow-indigo-600" />
         <button @click="closeModal"
           class="absolute top-4 right-4 text-white text-4xl font-semibold bg-transparent hover:text-gray-300 transition-all duration-300 ease-in-out">
@@ -39,7 +40,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 // Import the images you want to use
@@ -53,8 +53,6 @@ import hobby8 from '@/assets/hobby/hobby8.png';
 import hobby9 from '@/assets/hobby/hobby9.png';
 import hobby10 from '@/assets/hobby/hobby10.png';
 import hobby11 from '@/assets/hobby/hobby11.png';
-
-
 
 export default {
   name: 'GraphicExplore',
@@ -91,4 +89,35 @@ export default {
 
 <style scoped>
 /* Additional custom styles for the modal */
+@media (max-width: 640px) {
+
+  /* Mobile adjustments */
+  h1 {
+    font-size: 1.25rem;
+    /* Adjust font size */
+  }
+
+  .group img {
+    height: 16rem;
+    /* Adjust image height for smaller screens */
+  }
+
+  .modal img {
+    max-height: 80%;
+    /* Adjust image size in modal for small screens */
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+
+  /* Tablet adjustments */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .group img {
+    height: 18rem;
+    /* Adjust image height for tablets */
+  }
+}
 </style>
