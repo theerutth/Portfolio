@@ -1,17 +1,20 @@
 <template>
+  <Analytics />
   <div id="app">
     <transition name="fade" mode="out-in">
       <router-view />
     </transition>
-    <Analytics />
-
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+// Import Analytics at the top
 import { Analytics } from '@vercel/analytics/vue';
 
+export default {
+  name: 'App',
+  components: {
+    Analytics // Register the Analytics component here
+  }
+}
 </script>
