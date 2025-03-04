@@ -3,34 +3,42 @@
     <h1 class="text-3xl font-bold mb-8 text-white font-montserrat text-center">UX/UI WORKS</h1>
 
     <!-- Card container -->
-    <!-- Card container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto">
       <div v-for="(work, index) in works" :key="index"
-        class="bg-white shadow-xl overflow-hidden flex flex-col rounded-lg cursor-pointer hover:shadow-2xl transition-all duration-300"
+        class="bg-white shadow-lg overflow-hidden flex flex-col rounded-lg cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105 ease-in-out"
         @click="openModal(index)">
-
         <!-- Image Gallery Section inside Card -->
-        <div class="w-56 h-48 overflow-hidden">
+        <div class="w-full h-64 overflow-hidden">
           <img :src="work.images[0]" :alt="work.description"
-            class="w-full h-full object-cover transition-all duration-300" />
+            class="w-full h-full object-cover transition-all duration-300 rounded-t-lg" />
         </div>
 
         <!-- Work details -->
-        <div class="p-6 flex flex-col">
-          <h2 class="text-2xl font-bold text-black font-montserrat mb-2">{{ work.name }}</h2>
-          <p class="text-gray-500 text-sm mb-3">{{ work.date }}</p>
-          <p class="text-gray-600 text-base leading-relaxed">{{ work.description }}</p>
+        <div class="p-6 flex flex-col space-y-4">
+          <h2 class="text-3xl font-semibold text-black font-montserrat mb-2 hover:text-primary transition-colors">
+            {{ work.name }}
+          </h2>
+          <p class="text-gray-600 text-sm mb-3">{{ work.date }}</p>
+          <p class="text-gray-700 text-base leading-relaxed">{{ work.description }}</p>
+        </div>
+
+        <!-- Optional footer for actions -->
+        <div class="px-6 pb-6 mt-auto">
+          <button
+            class="w-full py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-dark transition-all duration-200">
+            View More
+          </button>
         </div>
       </div>
     </div>
 
-
     <!-- Fullscreen Modal -->
     <div v-if="isModalOpen" class="fixed inset-0 bg-white flex flex-col justify-center items-center z-50 p-6">
-
       <!-- Close Button -->
-      <button @click="closeModal"
-        class="absolute top-6 right-6 text-black text-4xl hover:text-gray-400 transition-all">&times;</button>
+      <button @click="closeModal" class="absolute top-6 right-6 text-black text-4xl hover:text-gray-400 transition-all"
+        aria-label="Close Modal">
+        &times;
+      </button>
 
       <!-- Horizontal Scrollable Image Gallery -->
       <div class="w-full h-3/4 flex overflow-x-auto space-x-4 px-10 modal-gallery">
@@ -45,7 +53,6 @@
         <p class="text-gray-400 text-sm mb-3">{{ selectedWork.date }}</p>
         <p class="text-gray-300 text-base leading-normal">{{ selectedWork.description }}</p>
       </div>
-
     </div>
 
     <!-- Go Back Button -->
@@ -59,6 +66,7 @@
     </router-link>
   </div>
 </template>
+
 
 <script>
 import cp1 from '@/assets/uxui/cp1.png';
@@ -92,38 +100,38 @@ export default {
     return {
       works: [
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'Capstone Project',
+          date: '2024-06-10',
           description: 'A modern, responsive web design for a tech company.',
           images: [cp1, cp2, cp3, cp4],
         },
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'KS Global Invest [Internship]',
+          date: '2023-01-06',
           description: 'A modern, responsive web design for a tech company.',
           images: [ks1, ks2, ks3],
         },
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'ERC [Internship]',
+          date: '2023-02-08',
           description: 'A modern, responsive web design for a tech company.',
           images: [er1, er2, er3],
         },
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'ProactiveGuard',
+          date: '2023-10-01',
           description: 'A modern, responsive web design for a tech company.',
           images: [pa1, pa2, pa3, pa4],
         },
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'Plan Trip Application',
+          date: '2024-06-17',
           description: 'A modern, responsive web design for a tech company.',
           images: [pt1, pt2, pt3],
         },
         {
-          name: 'Creative Web Design',
-          date: '2025-01-01',
+          name: 'Menu Preview Design',
+          date: '2023-12-23',
           description: 'A modern, responsive web design for a tech company.',
           images: [uxui1, uxui2],
         },
@@ -142,10 +150,9 @@ export default {
       this.isModalOpen = false;
       document.body.style.overflow = ''; // Re-enable scrolling
     },
-  }
-}
+  },
+};
 </script>
-
 <style scoped>
 /* Modal Image Gallery */
 .modal-gallery {
@@ -168,5 +175,10 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* Optional styling for modal content */
+.modal-gallery div {
+  scroll-snap-align: start;
 }
 </style>
