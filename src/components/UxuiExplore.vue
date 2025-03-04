@@ -2,9 +2,21 @@
   <div class="min-h-screen bg-black p-6">
     <h1 class="text-2xl font-bold mb-6 text-white font-montserrat">UX/UI Works</h1>
 
+    <!-- Filter Categories -->
+    <div class="mb-6 flex gap-4">
+      <button v-for="category in uniqueCategories" :key="category" @click="filterByCategory(category)"
+        :class="{ 'bg-white text-gray-500 hover:bg-white hover:text-black font-semibold': selectedCategory === category, '': selectedCategory !== category }"
+        class="text-sm px-4 py-2 rounded-full border-2 border-white bg-black text-white hover:bg-white hover:text-black transition-all duration-300">
+        {{ category }}
+      </button>
+      <!-- <button @click="resetFilter"
+        class="px-4 py-2 rounded-full bg-gray-400 text-white text-sm font-medium transition-all duration-300">Clear
+        Filter</button> -->
+    </div>
+
     <!-- Card container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <div v-for="(work, index) in works" :key="index"
+      <div v-for="(work, index) in filteredWorks" :key="index"
         class="bg-white shadow-lg rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 max-w-xs mx-auto"
         @click="openModal(index)">
         <!-- Image Gallery Section inside Card -->
@@ -16,6 +28,12 @@
         <div class="p-6 space-y-4">
           <h2 class="text-3xl font-semibold text-black mb-2 hover:text-primary transition-colors">{{ work.name }}</h2>
           <p class="text-gray-600 text-sm">{{ work.date }}</p>
+          <div class="flex flex-wrap gap-2">
+            <span v-for="(tag, tagIndex) in work.category" :key="tagIndex"
+              class="text-xs bg-gray-200 text-gray-800 py-1 px-3 rounded-full">
+              {{ tag }}
+            </span>
+          </div>
           <p class="text-gray-700 text-base">{{ truncateDescription(work.description) }}</p>
         </div>
       </div>
@@ -37,8 +55,17 @@
       <div class="bg-black bg-opacity-90 p-6 rounded-lg text-white mt-4 max-w-2xl">
         <h2 class="text-2xl font-semibold mb-2">{{ selectedWork.name }}</h2>
         <p class="text-gray-400 text-sm mb-3">{{ selectedWork.date }}</p>
+
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span v-for="(tag, tagIndex) in selectedWork.category" :key="tagIndex"
+            class="text-xs bg-gray-600 text-white py-1 px-3 rounded-full">
+            {{ tag }}
+          </span>
+        </div>
+
         <p class="text-gray-300 text-base">{{ selectedWork.description }}</p>
       </div>
+
     </div>
 
     <!-- Go Back Button -->
@@ -79,20 +106,32 @@ export default {
   data() {
     return {
       works: [
-        { name: 'Capstone Project', date: '2024-06-10', description: 'Designed the complete User Interface, including the system’s organization and functionality.', images: [cp1, cp2, cp3, cp4] },
-        { name: 'KS Global Invest [Internship]', date: '2023-01-06', description: 'Responsible for the design of the User Interface, including the website’s structure and functionality.', images: [ks1, ks2, ks3] },
-        { name: 'ERC [Internship]', date: '2023-02-08', description: 'Led the end-to-end design of the User Interface, collaborating with stakeholders, conducting user research, and ensuring system functionality aligned with project goals.', images: [er1, er2, er3] },
-        { name: 'ProactiveGuard', date: '2023-10-01', description: 'Redesigned a security services website to enhance UX, focusing on intuitive navigation and a professional visual layout.', images: [pa1, pa2, pa3, pa4] },
-        { name: 'Plan Trip Application', date: '2024-06-17', description: 'Designed a travel planning app, focusing on user research, user flows, and creating a seamless UX across devices.', images: [pt1, pt2, pt3] },
-        { name: 'Menu Preview Design', date: '2023-12-23', description: 'Designed a user-friendly, visually appealing menu for a food ordering service with an emphasis on mobile responsiveness.', images: [uxui1, uxui2] }
+        { name: 'Capstone Project', date: '2024-06-10', description: 'Designed the complete User Interface, including the system’s organization and functionality.', images: [cp1, cp2, cp3, cp4], category: ['Web Design'] },
+        { name: 'KS Global Invest [Internship]', date: '2023-01-06', description: 'Responsible for the design of the User Interface, including the website’s structure and functionality.', images: [ks1, ks2, ks3], category: ['Web Design'] },
+        { name: 'ERC [Internship]', date: '2023-02-08', description: 'Led the end-to-end design of the User Interface, collaborating with stakeholders, conducting user research, and ensuring system functionality aligned with project goals.', images: [er1, er2, er3], category: ['Mobile', 'UI Design'] },
+        { name: 'ProactiveGuard', date: '2023-10-01', description: 'Redesigned a security services website to enhance UX, focusing on intuitive navigation and a professional visual layout.', images: [pa1, pa2, pa3, pa4], category: ['Web Design'] },
+        { name: 'Plan Trip Application', date: '2024-06-17', description: 'Designed a travel planning app, focusing on user research, user flows, and creating a seamless UX across devices.', images: [pt1, pt2, pt3], category: ['Mobile', 'UI Design'] },
+        { name: 'Menu Preview Design', date: '2023-12-23', description: 'Designed a user-friendly, visually appealing menu for a food ordering service with an emphasis on mobile responsiveness.', images: [uxui1, uxui2], category: ['Mobile', 'UI Design'] }
       ],
+
       isModalOpen: false,
       selectedWork: {},
+      selectedCategory: null, // Filter state
     };
+  },
+  computed: {
+    uniqueCategories() {
+      return [...new Set(this.works.flatMap(work => work.category))];
+    },
+    filteredWorks() {
+      return this.selectedCategory
+        ? this.works.filter(work => work.category.includes(this.selectedCategory))
+        : this.works;
+    },
   },
   methods: {
     openModal(workIndex) {
-      this.selectedWork = this.works[workIndex];
+      this.selectedWork = this.filteredWorks[workIndex];
       this.isModalOpen = true;
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
     },
@@ -102,6 +141,12 @@ export default {
     },
     truncateDescription(description) {
       return description.length > 100 ? `${description.substring(0, 100)}...` : description;
+    },
+    filterByCategory(category) {
+      this.selectedCategory = this.selectedCategory === category ? null : category;
+    },
+    resetFilter() {
+      this.selectedCategory = null;
     },
   },
 };

@@ -2,14 +2,35 @@
   <div class="min-h-screen bg-black p-6">
     <h1 class="text-2xl font-bold mb-6 text-white font-montserrat">Others Works</h1>
 
-    <!-- Card container -->
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <button v-for="cat in uniqueCategories" :key="cat" @click="filterByCategory(cat)"
+        class="text-sm px-4 py-2 rounded-full border-2 border-white bg-black text-white hover:bg-white hover:text-black transition-all duration-300"
+        :class="{ 'bg-white text-gray-500 hover:bg-white hover:text-black font-semibold': selectedCategory === cat }">
+        {{ cat }}
+      </button>
+
+      <!-- <button @click="resetFilter"
+        class="text-sm px-4 py-2 rounded-full border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+        :class="{ 'bg-white text-gray-500 hover:bg-white hover:text-black font-semibold': selectedCategory === null }">
+        Reset
+      </button> -->
+    </div>
+
+
+    <!-- Card Container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      <!-- Each card representing a work -->
-      <div v-for="(work, index) in works" :key="index"
-        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
-        <img :src="work.image" :alt="work.description"
+      <div v-for="(work, index) in filteredWorks" :key="index"
+        class="group bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl relative">
+
+        <img :src="work.image" :alt="work.category"
           class="w-full h-64 object-cover rounded-t-lg cursor-pointer group-hover:scale-110 transition-all duration-300 ease-in-out"
           @click="openModal(work.image)" />
+
+        <!-- Category Badge -->
+        <div class="absolute top-2 left-2 bg-black text-white text-xs font-semibold px-3 py-1 rounded-full">
+          {{ work.category }}
+        </div>
       </div>
     </div>
 
@@ -23,7 +44,7 @@
       </div>
     </router-link>
 
-    <!-- Modal for displaying image in full screen -->
+    <!-- Modal for Displaying Image in Full Screen -->
     <div v-if="isModalOpen"
       class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 transition-opacity duration-500 ease-in-out"
       @click="closeModal">
@@ -39,7 +60,6 @@
 </template>
 
 <script>
-// Import the images you want to use
 import hobby1 from '@/assets/hobby/hobby1.png';
 import hobby2 from '@/assets/hobby/hobby2.png';
 import hobby3 from '@/assets/hobby/hobby3.png';
@@ -55,22 +75,32 @@ export default {
   name: 'GraphicExplore',
   data() {
     return {
-      // Sample works data to display in cards
       works: [
-        { image: hobby1 },
-        { image: hobby2 },
-        { image: hobby3 },
-        { image: hobby4 },
-        { image: hobby5 },
-        { image: hobby7 },
-        { image: hobby8 },
-        { image: hobby9 },
-        { image: hobby10 },
-        { image: hobby11 },
+        { image: hobby1, category: 'Drawing' },
+        { image: hobby2, category: 'Drawing' },
+        { image: hobby3, category: 'Drawing' },
+        { image: hobby4, category: 'Drawing' },
+        { image: hobby5, category: 'Illustration' },
+        { image: hobby7, category: 'Drawing' },
+        { image: hobby8, category: 'Drawing' },
+        { image: hobby9, category: 'Drawing' },
+        { image: hobby10, category: 'Poster' },
+        { image: hobby11, category: 'Illustration' },
       ],
       isModalOpen: false,
-      modalImage: null
+      modalImage: null,
+      selectedCategory: null,
     };
+  },
+  computed: {
+    uniqueCategories() {
+      return [...new Set(this.works.map(work => work.category))];
+    },
+    filteredWorks() {
+      return this.selectedCategory
+        ? this.works.filter(work => work.category === this.selectedCategory)
+        : this.works;
+    },
   },
   methods: {
     openModal(image) {
@@ -79,42 +109,14 @@ export default {
     },
     closeModal() {
       this.isModalOpen = false;
-    }
-  }
+    },
+    filterByCategory(category) {
+      // Toggle category selection
+      this.selectedCategory = this.selectedCategory === category ? null : category;
+    },
+    resetFilter() {
+      this.selectedCategory = null;
+    },
+  },
 };
 </script>
-
-<style scoped>
-/* Additional custom styles for the modal */
-@media (max-width: 640px) {
-
-  /* Mobile adjustments */
-  h1 {
-    font-size: 1.25rem;
-    /* Adjust font size */
-  }
-
-  .group img {
-    height: 16rem;
-    /* Adjust image height for smaller screens */
-  }
-
-  .modal img {
-    max-height: 80%;
-    /* Adjust image size in modal for small screens */
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1024px) {
-
-  /* Tablet adjustments */
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .group img {
-    height: 18rem;
-    /* Adjust image height for tablets */
-  }
-}
-</style>
