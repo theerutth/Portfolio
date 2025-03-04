@@ -6,15 +6,9 @@
     <div class="flex flex-wrap gap-2 mb-6">
       <button v-for="cat in uniqueCategories" :key="cat" @click="filterByCategory(cat)"
         class="text-sm px-4 py-2 rounded-full border-2 border-white bg-black text-white hover:bg-white hover:text-black transition-all duration-300"
-        :class="{ 'bg-white text-gray-500 hover:bg-white hover:text-black font-semibold': selectedCategory === cat }">
+        :class="{ 'bg-white text-gray-500 font-semibold': selectedCategory === cat, 'text-black': selectedCategory !== cat }">
         {{ cat }}
       </button>
-
-      <!-- <button @click="resetFilter"
-        class="text-sm px-4 py-2 rounded-full border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
-        :class="{ 'bg-white text-gray-500 hover:bg-white hover:text-black font-semibold': selectedCategory === null }">
-        Reset
-      </button> -->
     </div>
 
 

@@ -117,6 +117,7 @@ export default {
       isModalOpen: false,
       selectedWork: {},
       selectedCategory: null, // Filter state
+      scrollPosition: 0, // Store scroll position
     };
   },
   computed: {
@@ -134,10 +135,16 @@ export default {
       this.selectedWork = this.filteredWorks[workIndex];
       this.isModalOpen = true;
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+      // Store the current scroll position
+      this.scrollPosition = window.scrollY;
     },
     closeModal() {
       this.isModalOpen = false;
       document.body.style.overflow = ''; // Re-enable scrolling
+
+      // Restore the scroll position
+      window.scrollTo(0, this.scrollPosition);
     },
     truncateDescription(description) {
       return description.length > 100 ? `${description.substring(0, 100)}...` : description;
