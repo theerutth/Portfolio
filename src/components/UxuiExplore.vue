@@ -26,7 +26,7 @@
 
         <!-- Work details -->
         <div class="p-6 space-y-4">
-          <h2 class="text-3xl font-semibold text-black mb-2 hover:text-primary transition-colors">{{ work.name }}</h2>
+          <h2 class="text-3xl font-montserrat text-black mb-2 hover:text-primary transition-colors">{{ work.name }}</h2>
           <p class="text-gray-600 text-sm">{{ work.date }}</p>
           <div class="flex flex-wrap gap-2">
             <span v-for="(tag, tagIndex) in work.category" :key="tagIndex"
@@ -53,7 +53,7 @@
 
       <!-- Work Details -->
       <div class="bg-black bg-opacity-90 p-6 rounded-lg text-white mt-4 max-w-2xl">
-        <h2 class="text-2xl font-semibold mb-2">{{ selectedWork.name }}</h2>
+        <h2 class="text-2xl font-montserrat mb-2">{{ selectedWork.name }}</h2>
         <p class="text-gray-400 text-sm mb-3">{{ selectedWork.date }}</p>
 
         <div class="flex flex-wrap gap-2 mb-4">
@@ -62,8 +62,7 @@
             {{ tag }}
           </span>
         </div>
-
-        <p class="text-gray-300 text-base">{{ selectedWork.description }}</p>
+        <p class="text-gray-300 font-montserrat text-base">{{ selectedWork.description }}</p>
       </div>
 
     </div>

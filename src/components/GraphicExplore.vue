@@ -34,9 +34,12 @@ import illus4 from '@/assets/illus/illus4.png';
 import illus5 from '@/assets/illus/illus5.png';
 import illus6 from '@/assets/illus/illus6.png';
 import illus7 from '@/assets/illus/illus7.png';
+import illus8 from '@/assets/illus/illus8.png';
+import illus9 from '@/assets/illus/illus9.png';
 import illus10 from '@/assets/illus/illus10.png';
 import illus11 from '@/assets/illus/illus11.png';
-import illus12 from '@/assets/illus/illus12.png';
+
+
 
 
 
@@ -53,10 +56,10 @@ export default {
         { description: 'Description of Work 5', image: illus5 },
         { description: 'Description of Work 6', image: illus6 },
         { description: 'Description of Work 7', image: illus7 },
+        { description: 'Description of Work 8', image: illus8 },
+        { description: 'Description of Work 9', image: illus9 },
         { description: 'Description of Work 10', image: illus10 },
         { description: 'Description of Work 11', image: illus11 },
-        { description: 'Description of Work 12', image: illus12 },
-
       ]
     }
   }

@@ -127,7 +127,7 @@
           <!-- Card 6 -->
           <div
             class="card bg-white h-full shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 inline-block min-w-[400px]">
-            <img src="../assets/illus/illus11.png" alt="Project 1" class="w-full h-full object-cover">
+            <img src="../assets/illus/illus10.png" alt="Project 1" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
